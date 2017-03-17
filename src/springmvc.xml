@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+	  http://www.springframework.org/schema/beans
+	  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-3.0.xsd
+
+      ">
+
+    <!-- 注册适配器 -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 注册全部的Action ,这样可以用注解的方式完成路径的设计-->
+    <!--让springioc容器去扫描带@Controller的类 action 里面是全部的请求 -->
+    <context:component-scan base-package="cn.blog.action"/>
+
+    <!-- 注册Dao -->
+    <bean id="BlogDaoID" class="cn.blog.dao.BlogDao"/>
+    <bean id="BloggerDaoID" class="cn.blog.dao.BloggerDao"/>
+    <bean id="DanmuDaoID" class="cn.blog.dao.DanmuDao"/>
+    <bean id="LeavemsgDaoID" class="cn.blog.dao.LeavemsgDao"/>
+    <bean id="FriendlinkDaoID" class="cn.blog.dao.FriendlinkDao"/>
+
+    <!-- 注册Service -->
+    <bean id="BlogServiceID" class="cn.blog.service.BlogService">
+        <property name="BlogDao" ref="BlogDaoID"/>
+    </bean>
+    <bean id="BloggerServiceID" class="cn.blog.service.BloggerService">
+        <property name="BloggerDao" ref="BloggerDaoID"/>
+    </bean>
+    <bean id="DanmuServiceID" class="cn.blog.service.DanmuService">
+        <property name="DanmuDao" ref="DanmuDaoID"/>
+    </bean>
+    <bean id="LeavemsgServiceID" class="cn.blog.service.LeavemsgService">
+        <property name="LeavemsgDao" ref="LeavemsgDaoID"/>
+    </bean>
+    <bean id="FriendlinkServiceID" class="cn.blog.service.FriendlinkService">
+        <property name="FriendlinkDao" ref="FriendlinkDaoID"/>
+    </bean>
+
+</beans>

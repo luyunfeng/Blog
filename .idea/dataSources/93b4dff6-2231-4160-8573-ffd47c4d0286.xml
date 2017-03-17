@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db_blog@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="db_blog">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="blog"/>
+    <schema id="4" parent="1" name="blog3"/>
+    <schema id="5" parent="1" name="blog4"/>
+    <schema id="6" parent="1" name="booking"/>
+    <schema id="7" parent="1" name="clean_blog"/>
+    <schema id="8" parent="1" name="information_schema"/>
+    <schema id="9" parent="1" name="mysql"/>
+    <schema id="10" parent="1" name="performance_schema"/>
+    <schema id="11" parent="1" name="student"/>
+    <table id="12" parent="2" name="blog"/>
+    <table id="13" parent="2" name="blogger"/>
+    <table id="14" parent="2" name="danmu"/>
+    <table id="15" parent="2" name="friendlink"/>
+    <table id="16" parent="2" name="img"/>
+    <table id="17" parent="2" name="leavemsg"/>
+    <table id="18" parent="2" name="tag"/>
+    <column id="19" parent="12" name="id">
+      <Position>1</Position>
+      <Comment>博客文章id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="12" name="title">
+      <Position>2</Position>
+      <Comment>博客题目</Comment>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="12" name="releaseDate">
+      <Position>3</Position>
+      <Comment>发布日期</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="22" parent="12" name="content">
+      <Position>4</Position>
+      <Comment>博客内容</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="23" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="24" parent="13" name="id">
+      <Position>1</Position>
+      <Comment>博主id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="13" name="username">
+      <Position>2</Position>
+      <Comment>登录名</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="13" name="password">
+      <Position>3</Position>
+      <Comment>登陆密码</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="13" name="nickname">
+      <Position>4</Position>
+      <Comment>博主昵称</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="28" parent="13" name="sign">
+      <Position>5</Position>
+      <Comment>博主签名</Comment>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="29" parent="13" name="touxiang">
+      <Position>6</Position>
+      <Comment>博主头像路径</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="30" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="31" parent="14" name="id">
+      <Position>1</Position>
+      <Comment>danmuid</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="32" parent="14" name="user">
+      <Position>2</Position>
+      <Comment>发送人者联系方式</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="33" parent="14" name="content">
+      <Position>3</Position>
+      <Comment>弹幕内容</Comment>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="34" parent="14" name="time">
+      <Position>4</Position>
+      <Comment>弹幕播放时间</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="35" parent="14" name="blog_id">
+      <Position>5</Position>
+      <Comment>外键关联具体博客</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="36" parent="14" name="blog_id">
+      <ColNames>blog_id</ColNames>
+    </index>
+    <key id="37" parent="14" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="38" parent="14" name="danmu_ibfk_1">
+      <ColNames>blog_id</ColNames>
+      <RefSchemaName>db_blog</RefSchemaName>
+      <RefTableName>blog</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="39" parent="15" name="id">
+      <Position>1</Position>
+      <Comment>友情链接表id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="40" parent="15" name="linkname">
+      <Position>2</Position>
+      <Comment>友情链接名</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="41" parent="15" name="linkurl">
+      <Position>3</Position>
+      <Comment>友情链接url</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="42" parent="15" name="mail">
+      <Position>4</Position>
+      <Comment>友链的交换的联系人邮箱</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <key id="43" parent="15" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="45" parent="16" name="img">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="46" parent="16" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="47" parent="17" name="id">
+      <Position>1</Position>
+      <Comment>留言 id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="17" name="user">
+      <Position>2</Position>
+      <Comment>留言者</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="49" parent="17" name="mail">
+      <Position>3</Position>
+      <Comment>邮箱</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="50" parent="17" name="content">
+      <Position>4</Position>
+      <Comment>内容</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="51" parent="17" name="date">
+      <Position>5</Position>
+      <Comment>日期</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <key id="52" parent="17" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="53" parent="18" name="id">
+      <Position>1</Position>
+      <Comment>博客id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="54" parent="18" name="tagName">
+      <Position>2</Position>
+      <Comment>标签名字</Comment>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="55" parent="18" name="blog_id">
+      <Position>3</Position>
+      <Comment>关联的博客id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="56" parent="18" name="blog_id">
+      <ColNames>blog_id</ColNames>
+    </index>
+    <key id="57" parent="18" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="58" parent="18" name="tag_ibfk_1">
+      <ColNames>blog_id</ColNames>
+      <RefSchemaName>db_blog</RefSchemaName>
+      <RefTableName>blog</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>

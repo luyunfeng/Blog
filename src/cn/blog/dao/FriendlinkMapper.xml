@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="friendlinkNamespace">
+    <!-- resultMap标签:映射实体与表
+             type属性：表示实体全路径名
+             id属性：为实体与表的映射取一个任意的唯一的名字
+        -->
+    <resultMap type="cn.blog.entity.Friendlink" id="friendlinkMap">
+        <!-- id标签:映射主键属性
+			 result标签：映射非主键属性
+		     property属性:实体的属性名
+		     column属性：表的字段名
+		-->
+        <id property="id" column="id"/>
+        <result property="linkname" column="linkname"/>
+        <result property="linkurl" column="linkurl"/>
+        <result property="mail" column="mail"/>
+    </resultMap>
+    <!--添加 友链-->
+    <insert id="addFriendlink" parameterType="cn.blog.entity.Friendlink"  >
+        insert into friendlink(linkname,linkurl,mail)
+        values(#{linkname},#{linkurl},#{mail})
+    </insert>
+    <!--得到所有的 友链-->
+    <select id="getAllFriendlink" resultMap="friendlinkMap">
+       SELECT * FROM friendlink;
+    </select>
+    <!--根据 id 删除 友链-->
+    <delete id="deleteFriendlink" parameterType="int">
+        delete from friendlink where id=#{id};
+    </delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+

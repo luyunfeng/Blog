@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="blogNamespace">
+    <!-- resultMap标签:映射实体与表
+             type属性：表示实体全路径名
+             id属性：为实体与表的映射取一个任意的唯一的名字
+        -->
+    <resultMap type="cn.blog.entity.Blog" id="blogMap">
+        <!-- id标签:映射主键属性
+			 result标签：映射非主键属性
+		     property属性:实体的属性名
+		     column属性：表的字段名
+		-->
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="releaseDate" column="releaseDate"/>
+        <result property="content" column="content"/>
+
+        <!--collection property="TagList" resultMap="tagNamespace.tagMap"/-->
+
+    </resultMap>
+    <!--
+		insert标签：要书写insert这么一个sql语句
+		id属性：为insert这么一个sql语句取一个任意唯一的名字
+		parameterType:要执行的dao中的方法的参数，如果是类的话，必须使用全路径类
+		useGeneratedKeys和keyProperty：当需要 返回刚刚插入值的 主键id使用
+		keyProperty里面写实体类的 id  最后封装到 Blog对象中去
+	-->
+    <!-- 插入 博客数据 标签 分开来 插入  在另外的 文件里面-->
+    <insert id="addBlog" parameterType="cn.blog.entity.Blog"  useGeneratedKeys="true" keyProperty="id">
+        insert into blog(title,releaseDate,content)
+                  values(#{title},#{releaseDate},#{content})
+    </insert>
+
+    <!-- 得到 所有的博客数据-->
+    <select id="getAllBlog" resultMap="blogMap" >
+      SELECT * FROM blog;
+    </select>
+
+    <!--根据 博客的id 得到一篇博客-->
+    <select id="getBlogById" resultMap="blogMap">
+        SELECT * FROM blog WHERE id=#{blogid}
+    </select>
+
+    <!--删除 指定的博客-->
+    <delete id="deleteBlog" parameterType="int">
+        delete from blog where id=#{blogid};
+    </delete>
+
+    <!--根据 博客标题 查找博客-->
+    <select id="getBlogByTitle" parameterType="String" resultMap="blogMap">
+        SELECT * FROM blog WHERE title=#{title};
+    </select>
+
+    <!--根据 标签名字 查找相关的博客-->
+    <select id="getBlogByTagName" parameterType="String" resultMap="blogMap">
+        select blog.id,blog.title
+         from tag,blog
+        WHERE tag.tagName=#{tagName} AND tag.blog_id=blog.id
+    </select>
+    <!--根据 关键字查找 阿紫内容里面搜索-->
+    <select id="getBlogByKeyWord" parameterType="String" resultMap="blogMap">
+        SELECT * FROM blog WHERE title LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+        OR content LIKE CONCAT(CONCAT('%', #{keyword}), '%');
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+

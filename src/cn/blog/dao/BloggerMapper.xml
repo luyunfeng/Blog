@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="bloggerNamespace">
+    <!-- resultMap标签:映射实体与表
+             type属性：表示实体全路径名
+             id属性：为实体与表的映射取一个任意的唯一的名字
+        -->
+    <resultMap type="cn.blog.entity.Blogger" id="bloggerMap">
+        <!-- id标签:映射主键属性
+			 result标签：映射非主键属性
+		     property属性:实体的属性名
+		     column属性：表的字段名
+		-->
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="nickname" column="nickname"/>
+        <result property="sign" column="sign"/>
+        <result property="touxiang" column="touxiang"/>
+    </resultMap>
+
+
+    <!-- 更新 博主 的 数据-->
+
+    <update id="updateBlogger" parameterType="cn.blog.entity.Blogger">
+        update blogger
+        <set>
+            <if test="username!=null">
+                username=#{username},
+            </if>
+            <if test="password!=null">
+                username=#{username},
+            </if>
+            <if test="nickname!=null">
+                nickname=#{nickname},
+            </if>
+            <if test="sign!=null">
+                sign=#{sign},
+            </if>
+            <if test="touxiang!=null">
+                touxiang=#{touxiang},
+            </if>
+        </set>
+        where id=#{id}
+
+    </update>
+    <!--查询 博主信息-->
+
+    <select id="findById" parameterType="int" resultMap="bloggerMap">
+        select *
+        from blogger
+        WHERE id=#{id}
+    </select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="danmuNamespace">
+    <!-- resultMap标签:映射实体与表
+             type属性：表示实体全路径名
+             id属性：为实体与表的映射取一个任意的唯一的名字
+        -->
+    <resultMap type="cn.blog.entity.Danmu" id="danmuMap">
+        <!-- id标签:映射主键属性
+			 result标签：映射非主键属性
+		     property属性:实体的属性名
+		     column属性：表的字段名
+		-->
+        <id property="id" column="id"/>
+        <result property="user" column="user"/>
+        <result property="content" column="content"/>
+        <result property="time" column="time"/>
+        <result property="blog_id" column="blog_id"/>
+    </resultMap>
+    <!--
+		insert标签：要书写insert这么一个sql语句
+		id属性：为insert这么一个sql语句取一个任意唯一的名字
+		parameterType:要执行的dao中的方法的参数，如果是类的话，必须使用全路径类
+	-->
+    <!--弹幕 加到数据库中-->
+    <insert id="addDanmu" parameterType="cn.blog.entity.Danmu" >
+        insert into danmu(user,content,time,blog_id)
+        values(#{user},#{content},#{time},#{blog_id})
+    </insert>
+    <select id="getDanmu" parameterType="int" resultMap="danmuMap">
+        SELECT * FROM danmu WHERE blog_id=#{blogid};
+    </select>
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
