@@ -68,7 +68,7 @@
                         }
                         return size;
                     };
-                    // 将 json 中的数据 传入 构建一个div盒子
+                    // 将 json 中的数据 传入 构建一个div id="article"盒子
                     function add(item) {
                         var html = "";
                         html += "<article style=\"background-image:url(\'/res/img/bamboo.jpg\');\" " +

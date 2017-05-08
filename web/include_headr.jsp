@@ -22,7 +22,8 @@
     <div class="row">
         <div class="col-sm-12">
 
-            <h3 style="font-family: 楷体; font-style:italic ">趁我们都还年轻,多欣赏下沿途的风景，不要错过了流年里温暖的人和物....</h3>
+            <h3 style="font-family: 楷体; font-style:italic ">手持两把锟斤拷,口中疾呼烫烫烫 &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+                <br/><br/>脚踏千朵屯屯屯,笑看万物锘锘锘  &nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;  </h3>
             <img src="${pageContext.request.contextPath}/res/img/headerbg.jpeg" class="hide">
         </div>
 

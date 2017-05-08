@@ -36,7 +36,7 @@
 
     <!-- 得到 所有的博客数据-->
     <select id="getAllBlog" resultMap="blogMap" >
-      SELECT * FROM blog;
+      SELECT * FROM blog ORDER BY id DESC;
     </select>
 
     <!--根据 博客的id 得到一篇博客-->
@@ -60,7 +60,7 @@
          from tag,blog
         WHERE tag.tagName=#{tagName} AND tag.blog_id=blog.id
     </select>
-    <!--根据 关键字查找 阿紫内容里面搜索-->
+    <!--根据 关键字查找 内容里面搜索-->
     <select id="getBlogByKeyWord" parameterType="String" resultMap="blogMap">
         SELECT * FROM blog WHERE title LIKE CONCAT(CONCAT('%', #{keyword}), '%')
         OR content LIKE CONCAT(CONCAT('%', #{keyword}), '%');

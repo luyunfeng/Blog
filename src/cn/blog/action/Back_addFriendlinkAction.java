@@ -29,4 +29,5 @@ public class Back_addFriendlinkAction {
         model.addAttribute("message","友链添加成功");
         return "/Back/friendlink.jsp";
     }
+
 }

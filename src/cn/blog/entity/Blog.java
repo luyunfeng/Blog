@@ -15,6 +15,8 @@ public class Blog {
     private String content;
     private List<Tag> TagList = new ArrayList();//关联属性
 
+
+
     public Blog( String title, String releaseDate, String content) {
         this.title = title;
         this.releaseDate = releaseDate;
@@ -25,6 +27,8 @@ public class Blog {
 
     */
     public Blog() {}
+
+
     public int getId() {
         return id;
     }

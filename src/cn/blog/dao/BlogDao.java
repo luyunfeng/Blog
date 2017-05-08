@@ -50,9 +50,9 @@ public class BlogDao {
                 DanmuDao danmuDao = new DanmuDao();
                 List<Danmu> danmus = danmuDao.getDanmu(oldblogid);
                 for (int i = 0; i < danmus.size(); i++) {
-                    System.out.println("修改之前弹幕中的博客 id" + danmus.get(i).getBlog_id());
+                    //System.out.println("修改之前弹幕中的博客 id" + danmus.get(i).getBlog_id());
                     danmus.get(i).setBlog_id(newblogId);
-                    System.out.println("修改之后弹幕中的博客 id" + danmus.get(i).getBlog_id());
+                    //System.out.println("修改之后弹幕中的博客 id" + danmus.get(i).getBlog_id());
 
                     danmuDao.addDanmu(danmus.get(i));
                 }
@@ -259,7 +259,7 @@ public class BlogDao {
     }
 
 
-
+//////////////////////////////////////
 
 
     //测试  根据 博客id 返回所有的标签

@@ -12,7 +12,10 @@
                 </div>
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="menu">
-                        <li class="nav-current" role="presentation">
+                        <!--li class="nav-current" role="presentation">
+                            <a href="/">首页</a>
+                        </li-->
+                        <li class="presentation" role="presentation">
                             <a href="/">首页</a>
                         </li>
                         <li role="presentation">
