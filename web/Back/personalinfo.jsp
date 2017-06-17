@@ -20,35 +20,26 @@
     <form
     action="${pageContext.request.contextPath}/Back/updateinfo.action"
     method="post">
-                    <span style="font-size:20px" class="label label-warning">
-                        登陆账号(不填表示不改)
-                    </span><br/>
-        <input type="text" name="username" size="31"/><br/><br/>
+          <span style="font-size:20px" class="label label-warning">用户登录</span>
+        <input type="text" name="username" size="31" placeholder="不填表示不改"/><br/><br/>
 
 
-        <span style="font-size:20px" class="label label-warning">
-                        登陆密码(不填表示不改)
-                    </span><br/>
-        <input type="password" name="password" size="33"/><br/><br/>
+        <span style="font-size:20px" class="label label-warning">登陆密码</span>
+        <input type="password" name="password" size="31" placeholder="不填表示不改"/><br/><br/>
 
 
-        <span style="font-size:20px" class="label label-warning">
-                        你的昵称(不填表示不改)
-                    </span><br/>
-        <input type="text" name="nickname" size="31"><br/><br/>
+        <span style="font-size:20px" class="label label-warning">你的昵称</span>
+        <input type="text" name="nickname" size="31" placeholder="不填表示不改"><br/><br/>
 
+
+        <span style="font-size:20px" class="label label-warning">你的签名</span>
+        <input type="text" name="sign" size="80" placeholder="不填表示不改"><br/><br/>
 
         <span style="font-size:20px" class="label label-warning">
-                        你的签名(不填表示不改)
-                    </span><br/>
-        <input type="text" name="sign" size="80"><br/><br/>
-
-
-        <span style="font-size:20px" class="label label-warning">
-                        上传头像(不填表示不改)
+                        上传头像
                    </span>
 
-        <textarea id="touxiang" name="touxiang" ></textarea>
+        <textarea id="touxiang" name="touxiang" placeholder="不填表示不改"></textarea>
 
         <script type="text/javascript">
 
@@ -62,7 +53,8 @@
                 //关闭elementPath
                 elementPathEnabled: false,
                 //默认的编辑区域高度
-                initialFrameHeight: 300
+                initialFrameHeight: 100,
+                initialFrameWidth:600
                 //更多其他参数，请参考ueditor.config.js中的配置项
             });
 
@@ -74,5 +66,9 @@
                class="btn btn-danger"/>
     </form>
 </div>
+
+
+
+
 </body>
 </html>

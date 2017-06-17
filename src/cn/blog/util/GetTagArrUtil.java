@@ -12,7 +12,7 @@ public class GetTagArrUtil {
     public static ArrayList<Tag>  getTagArr(String tags){
         ArrayList<Tag> tagArr=new ArrayList<>();
 
-        String[] strings = tags.split(" |,");//根据“ ”和“,”区分
+        String[] strings = tags.split(" |,|，|；|;");//根据“ ”和“,”区分
 
         for (int x=0;x<strings.length;x++){
             //去除多余的空格
@@ -30,7 +30,7 @@ public class GetTagArrUtil {
 
     @Test
     public void test(){
-        String sss = "gogogogo 9     6666 java 哈哈";
+        String sss = "gogogogo 9  , ，9999，，，，；;   6666 java 哈哈";
         System.out.println(getTagArr(sss));
     }
 }

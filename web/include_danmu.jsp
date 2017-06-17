@@ -140,6 +140,46 @@
 
             $('#danmu').danmu("addDanmu", arrdanmu);
         }
+        function ischinese(s){
+            for(var i=0;i<s.length;i++) {
+                //遍历每一个文本字符
+                // 判断文本字符的unicode值
+                if((s.charCodeAt(i)>=10000)){
+                    return true;
+                }
+            }
+            return false;
+        }
+        function chk()
+        {
+            var str = document.getElementById('text').value;
+            var val= ischinese(str);               //判断是否包含中文
+            if(val){
+                //alert("有中文");
+                return true;
+
+            } else{
+                //alert("全是英文");
+                // 如果全是英文就返回 false 禁止评论
+                return false;
+            }
+
+        }
+        // 统计字数，英文一个字符，中文两个
+        function strlen(str){
+            var len = 0;
+            for (var i=0; i<str.length; i++) {
+                var c = str.charCodeAt(i);
+                //单字节加1
+                if ((c >= 0x0001 && c <= 0x007e) || (0xff60<=c && c<=0xff9f)) {
+                    len++;
+                }
+                else {
+                    len+=2;
+                }
+            }
+            return len;
+        }
 
 
         //发送弹幕 到服务器 并实时显示出来
@@ -150,7 +190,15 @@
             var position = document.getElementById('position').value;
             var time = $('#danmu').data("nowTime") + 1;
             var size = document.getElementById('text_size').value;
+            if(strlen(text)>200){
+                alert("你话太多了");
+                return false;
+            }
 
+            if(!chk()){
+                alert("说点中文吧");
+                return false;
+            }
             if (text=="") {
                 alert("不能发送空内容哦!");
                 return false;

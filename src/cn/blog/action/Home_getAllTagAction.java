@@ -36,13 +36,15 @@ public class Home_getAllTagAction {
     //异步方式得到 数据
     // 热门标签 前面六个
     @RequestMapping(value = "/gethottag")
-    public @ResponseBody List<Tag> gethottag() throws Exception {
+    public @ResponseBody
+    List<Tag> gethottag() throws Exception {
         List<Tag> tags = blogService.getAllTag();
-        List<Tag> newtags=new ArrayList<>();
-        for (int i = 0; i <tags.size() ; i++) {
-            if (i<6)
-            newtags.add(tags.get(i));
+        List<Tag> newtags = new ArrayList<>();
+        for (int i = 0; i < tags.size(); i++) {
+            if (i < 6)
+                newtags.add(tags.get(i));
         }
+
         return newtags;
     }
 

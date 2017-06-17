@@ -66,6 +66,7 @@ public class BlogService {
        默认在列表中显示 越热门排在前面
     */
     public List<Tag> getAllTag() {
+        BlogDao blogDao=new BlogDao();
         List<Tag> tags = blogDao.getAllTag();
         for (int i = 0; i < tags.size(); i++) {
             // 得到一个博客的数量 设置为最大
@@ -103,7 +104,7 @@ public class BlogService {
         BlogService blogService=new BlogService();
         List<Tag> tags=blogService.getAllTag();
         for (Tag tag: tags) {
-            System.out.println(tag.getBlogList().size());
+            System.out.println(tag.getTagName()+" "+tag.getBlogList().size());
         }
 
     }
